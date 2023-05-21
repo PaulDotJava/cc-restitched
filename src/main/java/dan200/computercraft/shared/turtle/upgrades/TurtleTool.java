@@ -21,6 +21,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -32,6 +33,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.decoration.ArmorStand;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -41,6 +43,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import org.apache.commons.lang3.tuple.Pair;
@@ -263,6 +266,27 @@ public class TurtleTool extends AbstractTurtleUpgrade
         }
 
         stopConsuming( turtleTile, turtle );
+
+
+        // If it was a lava cauldron and the turtle had a bucket, put lava in the bucket
+        if(state.getBlock().getDescriptionId().equals("block.minecraft.lava_cauldron")) {
+            for (int slot = 0; slot < turtle.getInventory().getContainerSize(); slot++) {
+                ItemStack stack = turtle.getInventory().getItem(slot);
+                if (stack.getItem() == Items.BUCKET) {
+                    System.out.println("Bucket detected");
+                    stack.setCount(stack.getCount()-1);
+
+                    for (int i = 0; i < turtle.getInventory().getContainerSize(); i++) {
+                        if(turtle.getInventory().getItem(i).isEmpty()) {
+                            turtle.getInventory().setItem(i, new ItemStack(Items.LAVA_BUCKET));
+                            break;
+                        }
+                    }
+
+                    break;
+                }
+            }
+        }
 
         return TurtleCommandResult.success();
 
