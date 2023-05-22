@@ -8,8 +8,13 @@
 # Note about this fork 
 Fork for custom adjustments for my personal use of the mod.
 
-### Custom features so far:
+### Custom features so far
+
 - turtles can take lava from cauldron by breaking it and having an empty bucket in their inventory
+
+### Planned features
+
+- chunk loading for turtles 
 
 <img src="readme-assets/whatiscc.png" alt="What is CC:Restitched" width="37.5%"/>
 
