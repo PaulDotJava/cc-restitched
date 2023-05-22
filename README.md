@@ -5,6 +5,7 @@
 [![Download CC: Restitched via Modrinth](https://img.shields.io/modrinth/dt/cc-restitched?color=00AF5C&label=modrinth&style=for-the-badge&logo=modrinth)](https://modrinth.com/mod/cc-restitched "Download CC:  Restitched via Modrinth")
 [![Gitpod ready-to-code](https://shields.io/badge/gitpod-ready--to--code-green?logo=gitpod&style=for-the-badge)](https://gitpod.io/#https://github.com/cc-tweaked/cc-restitched)
 
+Fork for custom adjustments for my personal use of the mod.
 
 <img src="readme-assets/whatiscc.png" alt="What is CC:Restitched" width="37.5%"/>
 
